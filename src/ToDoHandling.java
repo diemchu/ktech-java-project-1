@@ -51,6 +51,7 @@ public class ToDoHandling {
         toDoList.set(index, toDo);
         dataHandling.inputDataToFile(toDoList);
         System.out.println("edit suc!!!!!!");
+        System.out.println();
         return true;
     }
 
@@ -78,9 +79,11 @@ public class ToDoHandling {
         }
     }
 
+
+    // print totoList function
     public void showListToDo(){
         if(toDoList.isEmpty()){
-            System.out.println("할 일 없습니다");
+            System.out.println("You have no more TODOs left!!!");
             return;
         }
         int todoCount = 0;

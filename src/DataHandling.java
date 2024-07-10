@@ -1,15 +1,10 @@
 import java.io.*;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 public class DataHandling {
-//    private BufferedReader bufferedReader;
-//    private BufferedWriter bufferedWriter;
-//    private FileWriter fileWriter;
-//    private FileReader fileReader;
 
-
+    //file에 data 추가한다
     public void inputDataToFile(List<ToDo> toDoList) {
         try (FileWriter fileWriter = new FileWriter("src/menu.txt");
              BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
@@ -31,6 +26,7 @@ public class DataHandling {
         }
     }
 
+    //file에 data를 꺼낸다
     public List<ToDo> getDataFromFile() {
         List<ToDo> toDoList = new ArrayList<>();
         try (
