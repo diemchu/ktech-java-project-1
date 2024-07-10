@@ -1,10 +1,12 @@
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
+import java.util.StringTokenizer;
 
 public class ToDoHandling {
     private List<ToDo> toDoList;
@@ -62,10 +64,14 @@ public class ToDoHandling {
         String date;
         while (true) {
             try {
+                StringBuilder stringBuilder = new StringBuilder();
                 System.out.print("Title : ");
-                title = scanner.nextLine();
+                stringBuilder.append(bufferedReader.readLine());
+                title = stringBuilder.toString();
+                stringBuilder.setLength(0);
                 System.out.print("Until(yyyy-mm-dd) : ");
-                date = scanner.nextLine();
+                stringBuilder.append(bufferedReader.readLine());
+                date = stringBuilder.toString();
                 if(date.equals("")){
                     ToDo toDo = new ToDo(title, "");
                     return  toDo;
@@ -73,7 +79,23 @@ public class ToDoHandling {
                 LocalDate localDate = LocalDate.parse(date);
                 ToDo toDo = new ToDo(title,localDate.toString());
                 return toDo;
-            } catch (DateTimeException dateTimeException) {
+
+
+
+//                System.out.print("Title : ");
+//                title = scanner.nextLine();
+//                System.out.print("Until(yyyy-mm-dd) : ");
+//                date = scanner.nextLine();
+//                if(date.equals("")){
+//                    ToDo toDo = new ToDo(title, "");
+//                    return  toDo;
+//                }
+//                LocalDate localDate = LocalDate.parse(date);
+//                ToDo toDo = new ToDo(title,localDate.toString());
+//                return toDo;
+
+
+            } catch (DateTimeException | IOException dateTimeException) {
                 System.out.println("날짜를 잘 못입력했습니다");
             }
         }
@@ -105,6 +127,7 @@ public class ToDoHandling {
         scanner = new Scanner(System.in);
         dataHandling = new DataHandling();
         toDoList = dataHandling.getDataFromFile();
+        bufferedReader = new BufferedReader(new InputStreamReader(System.in));
     }
 
     public List<ToDo> getToDoList() {
