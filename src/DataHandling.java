@@ -40,7 +40,7 @@ public class DataHandling {
             String line;
             while ( (line = bufferedReader.readLine()) != null){
                 String elements[] = line.split(",");
-                ToDo  toDo = new ToDo(elements[0], LocalDate.parse(elements[1]));
+                ToDo  toDo = new ToDo(elements[0], elements.length > 1 ? elements[1]: "" );
                 toDoList.add(toDo);
             }
         } catch (IOException ioException) {

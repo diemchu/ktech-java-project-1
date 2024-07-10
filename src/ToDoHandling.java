@@ -65,7 +65,12 @@ public class ToDoHandling {
                 title = scanner.nextLine();
                 System.out.print("Until(yyyy-mm-dd) : ");
                 date = scanner.nextLine();
-                ToDo toDo = new ToDo(title, LocalDate.parse(date));
+                if(date.equals("")){
+                    ToDo toDo = new ToDo(title, "");
+                    return  toDo;
+                }
+                LocalDate localDate = LocalDate.parse(date);
+                ToDo toDo = new ToDo(title,localDate.toString());
                 return toDo;
             } catch (DateTimeException dateTimeException) {
                 System.out.println("날짜를 잘 못입력했습니다");

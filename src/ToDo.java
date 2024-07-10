@@ -2,9 +2,9 @@ import java.time.LocalDate;
 
 public class ToDo implements Comparable<ToDo> {
     private  String title;
-    private LocalDate until;
+    private String until;
 
-    public ToDo(String title, LocalDate until) {
+    public ToDo(String title, String until) {
         this.title = title;
         this.until = until;
     }
@@ -19,21 +19,21 @@ public class ToDo implements Comparable<ToDo> {
         this.title = title;
     }
 
-    public LocalDate getUntil() {
+    public String getUntil() {
         return until;
     }
 
-    public void setUntil(LocalDate until) {
+    public void setUntil(String until) {
         this.until = until;
     }
 
     @Override
     public String toString() {
-        return  String.format("title = %s , util = %s",title,until.toString());
+        return  String.format("title = %s , util = %s",title,until);
     }
 
     @Override
     public int compareTo(ToDo toDo) {
-       return this.until.toString().compareTo(toDo.getUntil().toString());
+       return this.until.compareTo(toDo.getUntil());
     }
 }
