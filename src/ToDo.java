@@ -1,6 +1,6 @@
 import java.time.LocalDate;
 
-public class ToDo {
+public class ToDo implements Comparable<ToDo> {
     private  String title;
     private LocalDate until;
 
@@ -8,6 +8,8 @@ public class ToDo {
         this.title = title;
         this.until = until;
     }
+
+
 
     public String getTitle() {
         return title;
@@ -23,5 +25,15 @@ public class ToDo {
 
     public void setUntil(LocalDate until) {
         this.until = until;
+    }
+
+    @Override
+    public String toString() {
+        return  String.format("title = %s , util = %s",title,until.toString());
+    }
+
+    @Override
+    public int compareTo(ToDo toDo) {
+       return this.until.toString().compareTo(toDo.getUntil().toString());
     }
 }
