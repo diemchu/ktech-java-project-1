@@ -1,4 +1,3 @@
-import java.time.LocalDate;
 
 public class ToDo implements Comparable<ToDo> {
     private  String title;
@@ -8,7 +7,6 @@ public class ToDo implements Comparable<ToDo> {
         this.title = title;
         this.until = until;
     }
-
 
 
     public String getTitle() {

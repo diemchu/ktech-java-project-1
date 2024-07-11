@@ -6,7 +6,6 @@ import java.time.LocalDate;
 import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
-import java.util.StringTokenizer;
 
 public class ToDoHandling {
     private List<ToDo> toDoList;

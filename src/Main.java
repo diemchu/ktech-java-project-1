@@ -2,9 +2,9 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
         ToDoHandling toDoHandling = new ToDoHandling();
         int option= 0;
+
         int index;
         while (true) {
             System.out.println("Welcome!");
@@ -45,8 +45,6 @@ public class Main {
                     break;
                 case 5:
                     return;
-
-
             }
         }
     }
