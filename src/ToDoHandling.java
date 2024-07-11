@@ -5,12 +5,10 @@ import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.util.Collections;
 import java.util.List;
-import java.util.Scanner;
 
 public class ToDoHandling {
     private List<ToDo> toDoList;
     private BufferedReader bufferedReader;
-    private Scanner scanner;
     private  DataHandling dataHandling;
 
 
@@ -78,22 +76,6 @@ public class ToDoHandling {
                 LocalDate localDate = LocalDate.parse(date);
                 ToDo toDo = new ToDo(title,localDate.toString());
                 return toDo;
-
-
-
-//                System.out.print("Title : ");
-//                title = scanner.nextLine();
-//                System.out.print("Until(yyyy-mm-dd) : ");
-//                date = scanner.nextLine();
-//                if(date.equals("")){
-//                    ToDo toDo = new ToDo(title, "");
-//                    return  toDo;
-//                }
-//                LocalDate localDate = LocalDate.parse(date);
-//                ToDo toDo = new ToDo(title,localDate.toString());
-//                return toDo;
-
-
             } catch (DateTimeException | IOException dateTimeException) {
                 System.out.println("날짜를 잘 못입력했습니다");
             }
@@ -123,7 +105,6 @@ public class ToDoHandling {
 
     public ToDoHandling() {
         bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        scanner = new Scanner(System.in);
         dataHandling = new DataHandling();
         toDoList = dataHandling.getDataFromFile();
         bufferedReader = new BufferedReader(new InputStreamReader(System.in));
@@ -132,10 +113,5 @@ public class ToDoHandling {
     public List<ToDo> getToDoList() {
         return toDoList;
     }
-
-    public void setToDoList(List<ToDo> toDoList) {
-        this.toDoList = toDoList;
-    }
-
 
 }
