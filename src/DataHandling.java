@@ -3,10 +3,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DataHandling {
+    private File file;
+    private static String fileName = "src/data.csv";
+
+    public  DataHandling(){
+        file = new File(fileName);
+        if(!file.exists()){
+            try {
+                file.createNewFile();
+            }catch (IOException ioException){
+                System.out.println(ioException.getMessage());
+            }
+        }
+    }
+
+
 
     //file에 data 추가한다
     public void inputDataToFile(List<ToDo> toDoList) {
-        try (FileWriter fileWriter = new FileWriter("src/menu.txt");
+        try (FileWriter fileWriter = new FileWriter(fileName);
              BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
         ) {
             for (ToDo t : toDoList) {
@@ -30,7 +45,7 @@ public class DataHandling {
     public List<ToDo> getDataFromFile() {
         List<ToDo> toDoList = new ArrayList<>();
         try (
-                FileReader fileReader = new FileReader("src/menu.txt");
+                FileReader fileReader = new FileReader(fileName);
                 BufferedReader bufferedReader = new BufferedReader(fileReader);
         ) {
             String line;
