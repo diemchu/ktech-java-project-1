@@ -61,6 +61,7 @@ public class ToDoHandling {
         String date;
         while (true) {
             try {
+                LocalDate localDateNow = LocalDate.now();
                 StringBuilder stringBuilder = new StringBuilder();
                 System.out.print("Title : ");
                 stringBuilder.append(bufferedReader.readLine());
@@ -69,13 +70,23 @@ public class ToDoHandling {
                 System.out.print("Until(yyyy-mm-dd) : ");
                 stringBuilder.append(bufferedReader.readLine());
                 date = stringBuilder.toString();
+
+                // 날짜를 입력하지 않는 경우
                 if(date.equals("")){
                     ToDo toDo = new ToDo(title, "");
                     return  toDo;
                 }
+
+
+                // 현재 날짜보다 비교한다
+                // 작으면 다시 입력시킨다
                 LocalDate localDate = LocalDate.parse(date);
-                ToDo toDo = new ToDo(title,localDate.toString());
-                return toDo;
+                if(localDate.compareTo(localDateNow) < 0){
+                    System.out.println("현재 날짜보다 같거나 커야 합니다!!");
+                }else {
+                    ToDo toDo = new ToDo(title,localDate.toString());
+                    return toDo;
+                }
             } catch (DateTimeException | IOException dateTimeException) {
                 System.out.println("날짜를 잘 못입력했습니다");
             }
