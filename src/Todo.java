@@ -5,10 +5,17 @@ public class Todo {
     private  String title;
     private LocalDate dueDate;
     private  boolean completed;
-
+    private  int id;
 
     public  Todo(String title, LocalDate dueDate){
         this(title,dueDate,false);
+    }
+
+    public Todo(String title, LocalDate dueDate, boolean completed, int id) {
+        this.title = title;
+        this.dueDate = dueDate;
+        this.completed = completed;
+        this.id = id;
     }
 
     public  Todo(String title, LocalDate dueDate, boolean completed){

@@ -37,7 +37,6 @@ public class TodoRepository {
             }
         }
     }
-
     public void writeToFile () throws  IOException{
         try (FileWriter fileWriter = new FileWriter(fileName);
              BufferedWriter writer = new BufferedWriter(fileWriter)) {
